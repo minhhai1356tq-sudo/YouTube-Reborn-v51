@@ -63,7 +63,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           repository: RootHide/theos
-          ref: master
+          ref: 16f19fb1da4322513a9ad0283c12f418121773d1
           path: theos
           submodules: recursive
 
@@ -117,8 +117,6 @@ jobs:
         run: |
           (echo 'THEOS_IGNORE_PARALLEL_BUILDING_NOTICE = yes' >> ~/.theosrc)
           cd ${{ github.workspace }}/main
-          sed -i '' '814s/.*/- (void)decorateContext:(id)context { }/; 817s/.*/- (void)decorateContext:(id)context { }/; 2421s/.*/- (void)setWatchCollapseButtonAvailable:(BOOL)available { %orig; }/' Tweak.xm
-          sed -n '814p;817p;2421p' Tweak.xm
           sed -i '' "12s#.*#BUNDLE_ID = ${{ env.BUNDLE_ID }}#g" Makefile
           sed -i '' "11s#.*#DISPLAY_NAME = ${{ env.APP_NAME }}#g" Makefile
           make package FINALPACKAGE=1

@@ -53,7 +53,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           path: main
-          ref: v4.2.8
+          ref: e13d59e4bca72437959ea941cc7b1bd7914d52b5
           submodules: recursive
 
       - name: Install Dependencies
